@@ -19,7 +19,7 @@ pipeline{
         stage('Deploy'){
             when{
                 expression{
-                    return params.DEPLOY == true
+                    return BRANCH_NAME == 'main'
                 }
             }
             steps{
