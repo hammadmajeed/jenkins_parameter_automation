@@ -13,6 +13,10 @@ pipeline{
         stage('Build'){
             steps{
                 echo 'Building the project version ${VERSION}'
+                script{
+                    gv = load "helper.groovy"
+                    gv.buildit()
+                }
             }
         }
         stage('Test'){
