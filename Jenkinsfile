@@ -5,10 +5,14 @@ pipeline{
         choice(name: 'BUILD_VERSION', choices:['1.0','1.1','1.2'], description: 'this is drop down list')
         booleanParam(name: 'DEPLOY', defaultValue: true, description: 'added to enable or disable test cases')
     }
+    environment{
+        VERSION='2.0'
+        SERVER_CREDENTIALS=credentials('test_credentials')
+     }
     stages{
         stage('Build'){
             steps{
-                echo 'Building the project'
+                echo 'Building the project version ${VERSION}'
             }
         }
         stage('Test'){
