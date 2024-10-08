@@ -18,6 +18,11 @@ pipeline{
             }
         }
         stage('Deploy'){
+            when{
+                expression{
+                    return params.DEPLOY == true
+                }
+            }
             steps{
                 echo 'Deploying the project...'
             }
